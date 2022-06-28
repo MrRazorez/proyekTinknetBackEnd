@@ -23,7 +23,7 @@ class userTinknetController extends Controller
 
             for ($i = 0; $i < count($data); $i++) {
                 if ($data[$i]["username"] == $kand[0] and $data[$i]["password"] == $kand[1]) {
-                    return validAPI::createAPI(hash("md5", $data[$i]["username"]));
+                    return validAPI::createAPI(hash("md5", $data[$i]["role"]));
                 }
             }
 

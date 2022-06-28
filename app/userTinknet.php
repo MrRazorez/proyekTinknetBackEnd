@@ -12,6 +12,7 @@ class userTinknet extends Model
     protected $table = "user_tinknet";
     protected $fillable = [
         "username",
+        "role",
         "password"
     ];
 

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('user_tinknet', function (Blueprint $table) {
             $table->id();
             $table->string("username");
+            $table->string("role");
             $table->string("password");
         });
     }

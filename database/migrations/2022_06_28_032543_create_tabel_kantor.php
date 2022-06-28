@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id("id_lokasi");
             $table->unsignedBigInteger("id_barang");
             $table->foreign("id_barang")->references("id_barang")->on("tabel_barang");
-            $table->string("jumlah");
+            $table->bigInteger("jumlah");
             $table->longText("status");
         });
     }

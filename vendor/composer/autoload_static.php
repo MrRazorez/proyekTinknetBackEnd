@@ -510,6 +510,7 @@ class ComposerStaticIniteb5e18692d7b00081161dc46230e8570
         'App\\Helpers\\checkAPI' => __DIR__ . '/../..' . '/app/Helpers/checkAPI.php',
         'App\\Helpers\\validAPI' => __DIR__ . '/../..' . '/app/Helpers/validAPI.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\officeController' => __DIR__ . '/../..' . '/app/Http/Controllers/officeController.php',
         'App\\Http\\Controllers\\userTinknetController' => __DIR__ . '/../..' . '/app/Http/Controllers/userTinknetController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',

@@ -11,6 +11,7 @@ return array(
     'App\\Helpers\\checkAPI' => $baseDir . '/app/Helpers/checkAPI.php',
     'App\\Helpers\\validAPI' => $baseDir . '/app/Helpers/validAPI.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\officeController' => $baseDir . '/app/Http/Controllers/officeController.php',
     'App\\Http\\Controllers\\userTinknetController' => $baseDir . '/app/Http/Controllers/userTinknetController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',

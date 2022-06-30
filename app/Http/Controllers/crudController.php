@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\crudTinknet;
+use App\Helpers\validData;
+use Exception;
 
 class crudController extends Controller
 {
@@ -14,19 +16,9 @@ class crudController extends Controller
      */
     public function index()
     {
-        $data = DB::table("tabel_barang")->get(); 
+        $data = crudTinknet::all();
 
-        return array("barang" => $data);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return array("barang" => $data, "jumlah_data" => count($data));
     }
 
     /**
@@ -37,29 +29,26 @@ class crudController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+            $data = crudTinknet::all();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+            $olah = crudTinknet::create([
+                "id_barang" => (count($data)+1),
+                "nama_perangkat" => $request->nama_perangkat,
+                "jenis" => $request->jenis,
+                "jumlah" => $request->jumlah,
+                "status" => $request->status,
+                "kondisi" => $request->kondisi,
+                "lokasi" => $request->lokasi
+            ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+            $msg = crudTinknet::where("id_barang", "=", $olah->id_barang)->get();
+
+            if ($msg) {
+                return validData::createAPI("Data Telah Masuk!!!", $msg);
+            }
+            else {
+                return validData::createAPI("Data Gagal Masuk!!!");
+            }
     }
 
     /**

@@ -5,18 +5,21 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class userTinknet extends Model
+class crudTinknet extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
 
-    protected $table = "user_tinknet";
+    protected $table = "tabel_barang";
     protected $fillable = [
-        "id",
-        "username",
-        "role",
-        "password"
+        "id_barang",
+        "nama_perangkat",
+        "jenis",
+        "jumlah",
+        "status",
+        "kondisi",
+        "lokasi"
     ];
 
     protected $hidden = [];

@@ -12,77 +12,76 @@ class crudController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function dataKantor()
+    public function index()
     {
-        $data = DB::table("tabel_barang")->
-        join("tabel_kantor", "tabel_barang.id_barang", "=", "tabel_kantor.id_barang")->
-        select("tabel_barang.id_barang", "tabel_barang.nama_perangkat", "tabel_barang.jenis", "tabel_kantor.jumlah", "tabel_kantor.status")->get(); 
+        $data = DB::table("tabel_barang")->get(); 
 
-        return array("kantor" => $data);
+        return array("barang" => $data);
     }
+
     /**
-     * Display a listing of the resource.
+     * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function dataGudang()
+    public function create()
     {
-        $data = DB::table("tabel_barang")->
-        join("tabel_gudang", "tabel_barang.id_barang", "=", "tabel_gudang.id_barang")->
-        select("tabel_barang.id_barang", "tabel_barang.nama_perangkat", "tabel_barang.jenis", "tabel_gudang.jumlah", "tabel_gudang.status")->get();
-
-        return array("gudang" => $data);
+        //
     }
+
     /**
-     * Display a listing of the resource.
+     * Store a newly created resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function dataAntv()
+    public function store(Request $request)
     {
-        $data = DB::table("tabel_barang")->
-        join("tabel_antv", "tabel_barang.id_barang", "=", "tabel_antv.id_barang")->
-        select("tabel_barang.id_barang", "tabel_barang.nama_perangkat", "tabel_barang.jenis", "tabel_antv.jumlah", "tabel_antv.status")->get();
-
-        return array("antv" => $data);
+        //
     }
+
     /**
-     * Display a listing of the resource.
+     * Display the specified resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function dataIndosiar()
+    public function show($id)
     {
-        $data = DB::table("tabel_barang")->
-        join("tabel_indosiar", "tabel_barang.id_barang", "=", "tabel_indosiar.id_barang")->
-        select("tabel_barang.id_barang", "tabel_barang.nama_perangkat", "tabel_barang.jenis", "tabel_indosiar.jumlah", "tabel_indosiar.status")->get();
-
-        return array("indosiar" => $data);
+        //
     }
+
     /**
-     * Display a listing of the resource.
+     * Show the form for editing the specified resource.
      *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function dataSumberAgung()
+    public function edit($id)
     {
-        $data = DB::table("tabel_barang")->
-        join("tabel_sumber_agung", "tabel_barang.id_barang", "=", "tabel_sumber_agung.id_barang")->
-        select("tabel_barang.id_barang", "tabel_barang.nama_perangkat", "tabel_barang.jenis", "tabel_sumber_agung.jumlah", "tabel_sumber_agung.status")->get();
-
-        return array("sumber_agung" => $data);
+        //
     }
+
     /**
-     * Display a listing of the resource.
+     * Update the specified resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function dataMitra()
+    public function update(Request $request, $id)
     {
-        $data = DB::table("tabel_barang")->
-        join("tabel_mitra", "tabel_barang.id_barang", "=", "tabel_mitra.id_barang")->
-        select("tabel_barang.id_barang", "tabel_barang.nama_perangkat", "tabel_barang.jenis", "tabel_mitra.jumlah", "tabel_mitra.status")->get();
+        //
+    }
 
-        return array("mitra" => $data);
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

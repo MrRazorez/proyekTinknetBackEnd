@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id("id_barang");
             $table->string("nama_perangkat");
             $table->string("jenis");
+            $table->string("jumlah");
+            $table->string("status");
+            $table->string("kondisi");
+            $table->string("lokasi");
         });
     }
 

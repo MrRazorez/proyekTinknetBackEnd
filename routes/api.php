@@ -19,6 +19,7 @@ use App\Http\Controllers\crudController;
 Route::get("usertinknet", [userTinknetController::class, "validAccount"]);
 Route::get("databarang", [crudController::class, "index"]);
 Route::get("databarang/store", [crudController::class, "store"]);
+Route::get("databarang/show/{id}", [crudController::class, "show"]);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

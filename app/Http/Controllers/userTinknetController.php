@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Exception;
 use App\userTinknet;
 use App\Helpers\validAPI;
 
@@ -17,7 +18,12 @@ class userTinknetController extends Controller
      */
     public function validAccount(Request $request)
     {
-        if ($request->username and $request->password) {
+        try {
+            $request->validate([
+                "username" => "required",
+                "password" => "required"
+            ]);
+
             $kand = array($request->username, hash("md5", hash("sha256", $request->password)));
             $data = userTinknet::orderBy("username", "asc")->get();
 
@@ -28,7 +34,9 @@ class userTinknetController extends Controller
             }
 
             return validAPI::createAPI("jangan_login");
+
+        } catch (Exception $error) {
+            return validAPI::createAPI("undefined");
         }
-        return validAPI::createAPI("undefined");
     }
 }

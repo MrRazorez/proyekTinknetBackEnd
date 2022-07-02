@@ -10,6 +10,7 @@ class crudTinknet extends Model
     use HasFactory;
 
     public $timestamps = false;
+    protected $primaryKey = "id_barang";
 
     protected $table = "tabel_barang";
     protected $fillable = [

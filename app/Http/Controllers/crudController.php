@@ -18,7 +18,21 @@ class crudController extends Controller
     {
         $data = crudTinknet::all();
 
-        return array("barang" => $data, "jumlah_data" => count($data));
+        if (count($data) > 0) {
+            return array("barang" => $data, "jumlah_data" => count($data));
+        }
+        else {
+            $hasil = array(array(
+                "id_barang" => 0,
+                "nama_perangkat" => "Kosong",
+                "jenis" => "Kosong",
+                "jumlah" => "Kosong",
+                "status" => "Kosong",
+                "kondisi" => "Kosong",
+                "lokasi" => "Kosong"
+            ));
+            return array("barang" => $hasil, "jumlah_data" => count($data));
+        }
     }
 
     /**

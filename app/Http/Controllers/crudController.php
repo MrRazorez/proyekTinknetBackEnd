@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\crudTinknet;
 use App\Helpers\validData;
+use App\Exports\barangExport;
 use Exception;
+use Excel;
 
 class crudController extends Controller
 {
@@ -158,5 +160,10 @@ class crudController extends Controller
         } catch(Exception $error) {
             return validData::createAPI("Data Gagal Dihapus!!!");
         }
+    }
+
+    public function exportToXLSX()
+    {
+        return Excel::download(new barangExport, "data_barang.xlsx");
     }
 }

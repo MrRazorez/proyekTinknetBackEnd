@@ -22,6 +22,7 @@ Route::post("databarang/store", [crudController::class, "store"]);
 Route::get("databarang/show/{id}", [crudController::class, "show"]);
 Route::post("databarang/update/{id}", [crudController::class, "update"]);
 Route::get("databarang/delete/{id}", [crudController::class, "destroy"]);
+Route::get("dataexport", [crudController::class, "exportToXLSX"]);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

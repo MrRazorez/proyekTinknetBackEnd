@@ -24,6 +24,22 @@ class barangExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        return collect(crudTinknet::all());
+        $data = crudTinknet::all();
+        if (count($data) > 0) {
+            return collect($data);
+        }
+        else {
+            $data = array(array(
+                "id_barang" => 0,
+                "nama_perangkat" => "Kosong",
+                "jenis" => "Kosong",
+                "jumlah" => "Kosong",
+                "status" => "Kosong",
+                "kondisi" => "Kosong",
+                "lokasi" => "Kosong"
+            ));
+
+            return collect($data);
+        }
     }
 }

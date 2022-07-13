@@ -17,6 +17,12 @@ use App\Http\Controllers\crudController;
 */
 
 Route::post("usertinknet", [userTinknetController::class, "validAccount"]);
+Route::get("usertinknet/show/{id}", [userTinknetController::class, "informasiAkun"]);
+Route::get("usertinknet/show", [userTinknetController::class, "index"]);
+Route::post("usertinknet/update/{id}", [userTinknetController::class, "ganti"]);
+Route::post("usertinknet/store", [userTinknetController::class, "tambah"]);
+Route::get("usertinknet/delete/{id}", [userTinknetController::class, "hapus"]);
+Route::get("usertinknet/reset/{id}", [userTinknetController::class, "resetAkun"]);
 Route::get("databarang", [crudController::class, "index"]);
 Route::post("databarang/store", [crudController::class, "store"]);
 Route::get("databarang/show/{id}", [crudController::class, "show"]);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\crudTinknet;
 use App\Helpers\validData;
 use App\Exports\barangExport;
@@ -127,43 +128,20 @@ class crudController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        try {
-            $olah = crudTinknet::findOrFail($id);
-            $msg = $olah->delete();
-
-            $data = crudTinknet::all();
-
-            for ($i = 0; $i < count($data); $i++) {
-                if ($data[$i]["id_barang"] != $i+1) {
-                    $atur = crudTinknet::findOrFail($data[$i]["id_barang"]);
-                    $atur->update([
-                        "id_barang" => $i+1,
-                        "nama_perangkat" => $data[$i]["nama_perangkat"],
-                        "jenis" => $data[$i]["jenis"],
-                        "jumlah" => $data[$i]["jumlah"],
-                        "status" => $data[$i]["status"],
-                        "kondisi" => $data[$i]["kondisi"],
-                        "lokasi" => $data[$i]["lokasi"]
-                    ]);
-                }
-            }
-            
-            return validData::createAPI("Data Telah Dihapus!!!");
-        } catch(Exception $error) {
-            return validData::createAPI("Data Gagal Dihapus!!!");
-        }
-    }
-
     public function exportToXLSX()
     {
         return Excel::download(new barangExport, "data_barang.xlsx");
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function tampilTotal()
+    {
+        $data = DB::table("tabel_barang")->select(DB::raw("SUM(jumlah) as total"))->where("kondisi", "=", "Bagus")->get();
+
+        return $data[0];
     }
 }
